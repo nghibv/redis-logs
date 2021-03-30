@@ -89,14 +89,18 @@ class ActivityLogService
      */
     public function redisActivity($params): array
     {
-        $memoryValidator = self::validate($params);
-        if ($memoryValidator->fails()) {
-            return self::getErrorWithMessages($memoryValidator->messages()->toArray());
-        }
+        try {
+            $memoryValidator = self::validate($params);
+            if ($memoryValidator->fails()) {
+                return self::getErrorWithMessages($memoryValidator->messages()->toArray());
+            }
 
-        $memoryKey = self::KEY.':'.time();
-        $memory = Cache::put($memoryKey, $params, 60*60);
-        return $memory ? self::getSuccess(true) : self::getError('Something went wrong!');
+            $memoryKey = self::KEY . ':' . time();
+            $memory = Cache::put($memoryKey, $params, 60 * 60);
+            return $memory ? self::getSuccess(true) : self::getError('Something went wrong!');
+        } catch (\Exception $exception) {
+            return self::getError($exception->getMessage());
+        }
     }
 
     /**
