@@ -1,0 +1,23 @@
+{
+    "name": "nghibv/redis-logs",
+    "description": "Activity logs employees using redis",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [{
+        "name": "Bui Van Nghi",
+        "email": "buivannghi1991@gmail.com"
+    }],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Nghibv\\Redislogs\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nghibv\\Redislogs\\": "packages/nghibv/redislogs/src",
+            "Tests\\": "tests/"
+        }
+    }
+}
