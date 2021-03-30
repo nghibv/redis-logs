@@ -56,7 +56,7 @@ class ActivityLogService
 
         $params = $request->all();
         $model = $this->model;
-        $params['limit'] = isset($params['limit']) && $params['limit'] != '' ? $params['limit'] : 3;
+        $params['limit'] = isset($params['limit']) && $params['limit'] != '' ? $params['limit'] : 20;
 
         if (isset($params['causer_id']) && $params['causer_id'] != '') {
             $model = $model->where('causer_id', $params['causer_id']);
