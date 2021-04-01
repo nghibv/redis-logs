@@ -74,6 +74,8 @@ class ActivityLogService
             foreach ($params['sort'] as $orderBy => $orderDirection) {
                 $model = $model->orderBy($orderBy, $orderDirection);
             }
+        } else {
+            $model = $model->orderBy('id', 'DESC');
         }
 
         if (isset($params['getAll']) && $params['getAll']) {
