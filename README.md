@@ -32,3 +32,9 @@ Index Activity Logs:
 
     $memories = new ActivityLogService();
     $list = $memories->index($request);
+
+Run command background:
+    
+    php artisan biz-activity-logs:process-caching-redis
+
+Or Config Schedule
