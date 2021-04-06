@@ -37,6 +37,10 @@ class ActivityLogService
         $this->model->title = $params['title'];
         $this->model->causer_id = $params['causer_id'];
         $this->model->causer_name = $params['causer_name'];
+        $this->model->action = $params['action'];
+        $this->model->object = $params['object'];
+        $this->model->object_id = $params['object_id'];
+        $this->model->object_name = $params['object_name'];
         $this->model->method = $params['method'];
         $this->model->route = $params['route'];
         $this->model->model = $params['model'];
@@ -58,6 +62,10 @@ class ActivityLogService
         $model = $this->model;
         $params['limit'] = isset($params['limit']) && $params['limit'] != '' ? $params['limit'] : 20;
 
+        if (isset($params['id']) && $params['id'] != '') {
+            $model = $model->where('id', $params['id']);
+        }
+
         if (isset($params['causer_id']) && $params['causer_id'] != '') {
             $model = $model->where('causer_id', $params['causer_id']);
         }
@@ -66,8 +74,24 @@ class ActivityLogService
             $model = $model->where('causer_name', $params['causer_name']);
         }
 
+        if (isset($params['object']) && $params['object'] != '') {
+            $model = $model->where('object', $params['object']);
+        }
+
+        if (isset($params['object_name']) && $params['object_name'] != '') {
+            $model = $model->where('object_name', $params['object_name']);
+        }
+
+        if (isset($params['object_id']) && $params['object_id'] != '') {
+            $model = $model->where('object_id', $params['object_id']);
+        }
+
         if (isset($params['model']) && $params['model'] != '') {
             $model = $model->where('model', $params['model']);
+        }
+
+        if (isset($params['action']) && $params['action'] != '') {
+            $model = $model->where('action', $params['action']);
         }
 
         if (isset($params['sort']) && !empty($params['sort'])) {

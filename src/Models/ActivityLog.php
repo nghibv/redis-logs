@@ -49,5 +49,21 @@ class ActivityLog extends Model
      * @var mixed
      */
     private $new;
+    /**
+     * @var mixed
+     */
+    private $object;
+    /**
+     * @var mixed
+     */
+    private $object_id;
+    /**
+     * @var mixed
+     */
+    private $object_name;
+    /**
+     * @var mixed
+     */
+    private $action;
 
 }
