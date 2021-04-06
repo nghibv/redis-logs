@@ -17,11 +17,7 @@ class CreateActivityLogTable extends Migration
             $table->bigIncrements('id');
             $table->string('title', 255);
             $table->bigInteger('causer_id');
-            $table->string('action', 50);
             $table->string('causer_name', 100);
-            $table->string('object', 100)->nullable(true);
-            $table->bigInteger('object_id')->nullable(true);
-            $table->string('object_name', 100)->nullable(true);
             $table->string('method', 10)->nullable(true);
             $table->string('route', 225)->nullable(true);
             $table->string('model', 100)->nullable(true);
