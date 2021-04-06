@@ -122,7 +122,7 @@ class ActivityLogService
             }
 
             $memoryKey = self::KEY . ':' . time();
-            $memory = Cache::put($memoryKey, $params, 60 * 60);
+            $memory = Cache::put($memoryKey, $params, 600);
             return $memory ? self::getSuccess(true) : self::getError('Something went wrong!');
         } catch (\Exception $exception) {
             return self::getError($exception->getMessage());

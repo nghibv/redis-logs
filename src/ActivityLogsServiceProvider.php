@@ -24,14 +24,13 @@ class ActivityLogsServiceProvider extends ServiceProvider
                 ProcessRedisActivity::class,
             ]
         );
+        $this->app->booted(function () {
+            $schedule = $this->app->make(Schedule::class);
+            $schedule->command(ProcessRedisActivity::class)->everyMinute();
+        });
     }
 
     public function register()
     {
-    }
-
-    public function schedule(Schedule $schedule)
-    {
-        $schedule->command(ProcessRedisActivity::class)->everyMinute();
     }
 }
